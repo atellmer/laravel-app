@@ -1,7 +1,5 @@
-Hello!
+#Laravel 5 seed
 
-Also you need install composer dependencies.
+You need install composer dependencies like that:
 
-<pre>
-	php composer.phar install
-</pre>
+```php composer.phar install```
