@@ -9,7 +9,16 @@ class PostController extends Controller
 {
     public function index(Post $postModel)
 	{	
-		$posts = $postModel -> getPublishedPost();
+		$posts = $postModel -> getPublishedPosts();
+		
+		return view('post/index', ['posts' => $posts]);
+
+	}
+	
+	
+	public function getUnPublishedPosts(Post $postModel)
+	{
+		$posts = $postModel -> getUnPublishedPosts();
 		
 		return view('post/index', ['posts' => $posts]);
 	}

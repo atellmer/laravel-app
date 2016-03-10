@@ -7,7 +7,7 @@ use Carbon\Carbon;
 class Post extends Model
 {
     
-	public function getPublishedPost()
+	public function getPublishedPosts()
 	{
 		//$posts = Post::all();
 		//dd($posts);
@@ -27,11 +27,29 @@ class Post extends Model
 		return $posts;
 	}
 	
+	public function getUnPublishedPosts()
+	{
+
+		$posts = $this
+					-> latest('published_at')
+					-> unPublished()
+					-> get();
+		
+		return $posts;
+	}
+	
 	public function scopePublished($query)
 	{
 		$query 
 			-> where('published_at', '<=', Carbon::now()) 
 			-> where('published', '=', 1);
+	}
+	
+	public function scopeUnPublished($query)
+	{
+		$query 
+			-> where('published_at', '=>', Carbon::now()) 
+			-> orWhere('published', '=', 0);
 	}
 
 }
