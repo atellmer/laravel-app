@@ -6,6 +6,7 @@ use Carbon\Carbon;
 
 class Post extends Model
 {
+	protected $guarded = ['_token'];
     
 	public function getPublishedPosts()
 	{
