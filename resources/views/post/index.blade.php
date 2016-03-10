@@ -1,5 +1,13 @@
 @extends('app/index')
 
 @section('content')
-<h1>Hello world 666!</h1>
+
+	@foreach($posts as $post)
+		<article>
+			<h2>{{$post -> title}}</h2>
+			<p>{!!$post -> excerpt!!}</p>
+			<p>published: {{$post -> published_at}}</p>
+		</article>
+	@endforeach
+
 @stop
