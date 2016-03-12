@@ -39,9 +39,14 @@ class PostController extends Controller
 		return redirect() -> route('posts');
 	}
 	
-	public function update()
+	public function update(Post $postModel, Request $request, $id)
 	{
-		
+		$post = $postModel -> find($id);
+		if(!$request -> published){
+			$request["published"] = 0;
+		}
+		$post -> update($request -> all());
+		return redirect() -> route('posts');
 	}
 	
 	public function show(Post $postModel, $id)
@@ -50,9 +55,10 @@ class PostController extends Controller
 		return view('post.show', ['post' => $post]);
 	}
 	
-	public function edit()
+	public function edit(Post $postModel, $id)
 	{
-		
+		$post = $postModel -> find($id);
+		return view('post.edit', ['post' => $post]);
 	}
 
 }

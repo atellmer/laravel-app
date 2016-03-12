@@ -20,7 +20,7 @@
 </div>
 <div class="form-group">
 	{!!Form::label('published_at')!!}
-	{!!Form::input('date', 'published_at', date('Y-m-d'), ['class' => 'form-control'])!!}
+	{!!Form::input('date', 'published_at', date('Y-m-d H:i:s'), ['class' => 'form-control'])!!}
 </div>
 <div class="form-group">
 	{!!Form::submit('Create', ['class' => 'btn btn-primary'])!!}
