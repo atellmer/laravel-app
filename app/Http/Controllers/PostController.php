@@ -33,9 +33,10 @@ class PostController extends Controller
 		return view('post/create');
 	}
 	
-	public function destroy()
+	public function destroy(Post $postModel, $id)
 	{
-		
+		$postModel -> destroy($id);
+		return redirect() -> route('posts');
 	}
 	
 	public function update()
