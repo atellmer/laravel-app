@@ -11,14 +11,14 @@ class PostController extends Controller
 	{	
 		$posts = $postModel -> getPublishedPosts();
 		
-		return view('post/index', ['posts' => $posts]);
+		return view('post.index', ['posts' => $posts]);
 	}
 	
 	public function getUnPublishedPosts(Post $postModel)
 	{
 		$posts = $postModel -> getUnPublishedPosts();
 		
-		return view('post/index', ['posts' => $posts]);
+		return view('post.index', ['posts' => $posts]);
 	}
 	
 	public function store(Post $postModel, Request $request)
@@ -30,7 +30,7 @@ class PostController extends Controller
 	
 	public function create()
 	{
-		return view('post/create');
+		return view('post.create');
 	}
 	
 	public function destroy(Post $postModel, $id)
@@ -44,9 +44,10 @@ class PostController extends Controller
 		
 	}
 	
-	public function show()
+	public function show(Post $postModel, $id)
 	{
-		
+		$post = $postModel -> find($id);
+		return view('post.show', ['post' => $post]);
 	}
 	
 	public function edit()
